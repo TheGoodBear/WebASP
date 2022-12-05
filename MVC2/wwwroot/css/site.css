@@ -21,3 +21,19 @@ body {
   margin-bottom: 60px;
   background-color: lawngreen;
 }
+
+.IndexPage p {
+    margin-top: 30px;
+}
+
+.IndexPage a {
+    text-decoration: none;
+    padding: 2px 5px;
+    border: 2px solid blue;
+    border-radius: 5px;
+    font-size: larger;
+}
+
+a:hover {
+    background-color: lightpink;
+}

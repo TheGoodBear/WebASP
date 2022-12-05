@@ -16,7 +16,10 @@ namespace MVC2.Controllers
 
         public IActionResult Index()
         {
-            var VM = new IndexVM();
+            var VM = new IndexVM(
+                "Alain",
+                "https://www.linkedin.com/in/alain-micalaudie",
+                "C#, Python");
 
             return View(VM);
         }

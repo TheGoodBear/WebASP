@@ -1,0 +1,19 @@
+﻿@model MVC2.ViewModels.Sample1.View2VM
+
+<h1>
+    @Model.Title
+</h1>
+
+@if (Model.Name != null)
+{
+    <p>
+        Candidat sélectionné : @Model.Name
+    </p>
+}
+else
+{
+    <p>
+        Pas de candidat !
+    </p>
+
+}

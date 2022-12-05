@@ -1,0 +1,33 @@
+﻿@model MVC2.ViewModels.Sample1.View1VM
+
+<h1>
+    @Model.Title
+</h1>
+
+@if (Model.Name != null)
+{
+    <p>
+        Bonjour @Model.Name
+    </p>
+
+    @if (Model.BirthYear != null)
+    {
+        <p>
+            tu as @Model.Age ans
+        </p>
+    }
+    else
+    {
+        <p>
+            ton âge est inconnu.
+        </p>
+    }
+
+}
+else
+{
+    <p>
+        Aucune information n'est disponible !
+    </p>
+
+}
