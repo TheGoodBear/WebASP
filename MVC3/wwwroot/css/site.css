@@ -1,0 +1,84 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: lawngreen;
+}
+
+.IndexPage p {
+    margin-top: 30px;
+}
+
+.IndexPage a {
+    text-decoration: none;
+    padding: 2px 5px;
+    border: 2px solid blue;
+    border-radius: 5px;
+    font-size: larger;
+}
+
+a:hover {
+    background-color: lightpink;
+}
+
+
+/* Views datalist management */
+.Centered {
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+}
+
+table thead {
+    text-align: center;
+    background-color: lightblue;
+}
+
+/* couleur khaki pour toutes les lignes paires d'un tableau */ 
+tr:nth-child(even) 
+{
+    background-color: khaki;
+}
+
+tr:hover {
+    background-color: fuchsia;
+}
+
+/* bordure droite pour toutes les cellules d'un tableau sauf la dernière */
+th:not(:last-child), td:not(:last-child) {
+    border-right: 2px solid black;
+}
+
+.MyButton {
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid blue;
+    text-decoration: none;
+}
+.MyButton:hover {
+    background-color: aquamarine;
+}
+
+.alert-danger {
+    margin-bottom: 30px;
+}

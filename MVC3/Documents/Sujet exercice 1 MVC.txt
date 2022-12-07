@@ -1,0 +1,18 @@
+A partir du projet MVC 2 :
+
+1 - Créer un nouveau controlleur DataManagement (DM)
+
+2 - Créer une vue DMList qui affiche sous forme de tableau la liste des étudiants de la formation (nom, sexe, age)
+Vous pouvez vous aider des modèles et des données créées dans le projet "ProjetFormation" de la solution "Console1"
+
+3 - Les noms affichés dans DMList devront être des liens cliquables
+
+4 - Créer une vue DMDetail qui affiche le détail des données d'un étudiant lorsque l'on clique sur son nom dans DMList
+Il doit exister un lien/bouton permettant de revenir à DMList depuis DMDetail
+
+5 - DMList doit être accessible depuis le menu de Home/Index
+
+6 - Ajouter du style css pour rendre agréable à utiliser les vues DMList et DMDetail
+
+Vous devez utiliser l'architecture MVMVC (Model ViewModel Vue Controller)
+Vous ne devez pas utiliser Entity Framework pour le moment

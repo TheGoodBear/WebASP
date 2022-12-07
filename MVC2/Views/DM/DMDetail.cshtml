@@ -1,0 +1,63 @@
+﻿@model MVC3.ViewModels.DM.DMDetailVM
+
+<section class="Centered">
+    <h1>@Model.Title</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    Nom
+                </td>
+                <td>
+                    @Model.CurrentPerson.LastName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Prénom
+                </td>
+                <td>
+                    @Model.CurrentPerson.FirstName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Sexe
+                </td>
+                <td>
+                    @Model.CurrentPerson.Sex
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Age
+                </td>
+                <td>
+                    @Model.CurrentPerson.Age ans
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Niveau
+                </td>
+                <td>
+                    @Model.CurrentPerson.ITLevel
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Localisation
+                </td>
+                <td>
+                    @Model.CurrentPerson.Location
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="MyButton" href="~/DM/DMList">
+        Retour à la liste
+    </a>
+
+</section>

@@ -1,0 +1,41 @@
+﻿@model MVC3.ViewModels.DM.DMListVM
+
+<section class="Centered">
+    <h1>@Model.Title</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Sexe
+                </th>
+                <th>
+                    Niveau
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (Person Student in Model.Persons)
+            {
+                <tr>
+                    <td>
+                        <a href="~/DM/DMDetail/@Student.Id">
+                            @Student
+                        </a>
+                    </td>
+                    <td>
+                        @Student.Sex
+                    </td>
+                    <td>
+                        @Student.ITLevel
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</section>
