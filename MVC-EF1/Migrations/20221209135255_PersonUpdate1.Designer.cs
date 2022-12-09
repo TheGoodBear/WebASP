@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_EF1.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20221207145640_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221209135255_PersonUpdate1")]
+    partial class PersonUpdate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,8 +36,8 @@ namespace MVC_EF1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
@@ -63,19 +63,25 @@ namespace MVC_EF1.Migrations
                     b.Property<int?>("BirthYear")
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("ITLevel")
+                    b.Property<int?>("ITLevel")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdGroup")
+                    b.Property<int?>("IdGroup")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Location")
                         .HasColumnType("int");
@@ -99,11 +105,13 @@ namespace MVC_EF1.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -113,7 +121,7 @@ namespace MVC_EF1.Migrations
             modelBuilder.Entity("MVC_EF1.Models.Group", b =>
                 {
                     b.HasOne("MVC_EF1.Models.Project", "Project")
-                        .WithMany("Groups")
+                        .WithMany()
                         .HasForeignKey("IdProject")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -125,9 +133,7 @@ namespace MVC_EF1.Migrations
                 {
                     b.HasOne("MVC_EF1.Models.Group", "Group")
                         .WithMany("Persons")
-                        .HasForeignKey("IdGroup")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdGroup");
 
                     b.Navigation("Group");
                 });
@@ -135,11 +141,6 @@ namespace MVC_EF1.Migrations
             modelBuilder.Entity("MVC_EF1.Models.Group", b =>
                 {
                     b.Navigation("Persons");
-                });
-
-            modelBuilder.Entity("MVC_EF1.Models.Project", b =>
-                {
-                    b.Navigation("Groups");
                 });
 #pragma warning restore 612, 618
         }

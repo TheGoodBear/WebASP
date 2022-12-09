@@ -22,7 +22,8 @@ namespace MVC_EF1.Controllers
         // GET: Person
         public async Task<IActionResult> Index()
         {
-            var dBContext = _context.Person.Include(p => p.Group);
+            var dBContext = _context.Person
+                .Include(p => p.Group);
             return View(await dBContext.ToListAsync());
         }
 
@@ -48,7 +49,8 @@ namespace MVC_EF1.Controllers
         // GET: Person/Create
         public IActionResult Create()
         {
-            ViewData["IdGroup"] = new SelectList(_context.Group, "Id", "Name");
+            ViewData["IdGroup"] = new SelectList(
+                _context.Group, "Id", "Name");
             return View();
         }
 
@@ -57,7 +59,8 @@ namespace MVC_EF1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,LastName,FirstName,Sex,BirthYear,ITLevel,Location,IdGroup")] Person person)
+        public async Task<IActionResult> Create(
+            [Bind("Id,LastName,FirstName,Sex, Email,BirthYear,ITLevel,Location,IdGroup")] Person person)
         {
             ModelState.Remove("Group");
             if (ModelState.IsValid)
@@ -66,7 +69,9 @@ namespace MVC_EF1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdGroup"] = new SelectList(_context.Group, "Id", "Name", person.IdGroup);
+
+            ViewData["IdGroup"] = new SelectList(
+                _context.Group, "Id", "Name", person.IdGroup);
             return View(person);
         }
 
@@ -83,7 +88,9 @@ namespace MVC_EF1.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdGroup"] = new SelectList(_context.Group, "Id", "Name", person.IdGroup);
+
+            ViewData["IdGroup"] = new SelectList(
+                _context.Group, "Id", "Name", person.IdGroup);
             return View(person);
         }
 
@@ -92,7 +99,8 @@ namespace MVC_EF1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,LastName,FirstName,Sex,BirthYear,ITLevel,Location,IdGroup")] Person person)
+        public async Task<IActionResult> Edit(
+            int id, [Bind("Id,LastName,FirstName,Sex,Email,BirthYear,ITLevel,Location,IdGroup")] Person person)
         {
             if (id != person.Id)
             {
@@ -119,7 +127,9 @@ namespace MVC_EF1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdGroup"] = new SelectList(_context.Group, "Id", "Name", person.IdGroup);
+
+            ViewData["IdGroup"] = new SelectList(
+                _context.Group, "Id", "Name", person.IdGroup);
             return View(person);
         }
 

@@ -46,14 +46,19 @@ Lier une clé étrangère à une table
 Dans les controlleurs :
 ViewData["<Clé étrangère>"] = new SelectList(_context.<Table liée>, "Id", "<Champ affiché>", <modèle actuel>.<clé étrangère>);
 
+ 
+Liaison des tables par clé étrangère dans le controlleur
+--------------------------------------------------------
 
-Erreurs lors de la validation des formulaires
----------------------------------------------
+    public async Task<IActionResult> Index()
+    {
+        var ReturnValue = _context
+            .Group
+            .Include(t => t.Project)
+            .ToListAsync();
 
-Dans les controlleurs (pour chaque élément relationnel) :
-ModelState.Remove("<Element relationel>");
-if (ModelState.IsValid)
-
+        return View(await ReturnValue);
+    }
 
 
 Conventions Entity Framework et Propriétés nullables 
@@ -73,8 +78,8 @@ Exemple :
         public int IdProject { get; set; }
         //relations
         [ForeignKey("IdProject")]
-        public Project Project { get; set; }
-        public List<Person>? Persons { get; set; }
+        public virtual Project? Project { get; set; }
+        public virtual List<Person>? Persons { get; set; }
 
     Extrait de Project (Description peut être null) : 
         // read/write (get/set) properties

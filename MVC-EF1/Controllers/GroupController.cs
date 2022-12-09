@@ -22,9 +22,12 @@ namespace MVC_EF1.Controllers
         // GET: Group
         public async Task<IActionResult> Index()
         {
-            var dBContext = _context.Group
-                .Include(t => t.Project);
-            return View(await dBContext.ToListAsync());
+            var ReturnValue = _context
+                .Group
+                .Include(t => t.Project)
+                .ToListAsync();
+
+            return View(await ReturnValue);
         }
 
         // GET: Group/Details/5
@@ -36,8 +39,9 @@ namespace MVC_EF1.Controllers
             }
 
             var @group = await _context.Group
-                .Include(t => t.Project)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(t => t.Project)   
+                .FirstOrDefaultAsync(m => m.Id == id)
+;
             if (@group == null)
             {
                 return NotFound();
@@ -49,7 +53,8 @@ namespace MVC_EF1.Controllers
         // GET: Group/Create
         public IActionResult Create()
         {
-            ViewData["IdProject"] = new SelectList(_context.Project, "Id", "Name");
+            ViewData["IdProject"] = new SelectList(
+                _context.Project, "Id", "Name");
             return View();
         }
 
@@ -58,16 +63,18 @@ namespace MVC_EF1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Number,Name,Technology,IdProject")] Group @group)
+        public async Task<IActionResult> Create(
+            [Bind("Id,Number,Name,Technology,IdProject")] Group @group)
         {
-            ModelState.Remove("Project");
             if (ModelState.IsValid)
             {
                 _context.Add(@group);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdProject"] = new SelectList(_context.Project, "Id", "Name", @group.IdProject);
+
+            ViewData["IdProject"] = new SelectList(
+                _context.Project, "Id", "Name");
             return View(@group);
         }
 
@@ -79,12 +86,16 @@ namespace MVC_EF1.Controllers
                 return NotFound();
             }
 
-            var @group = await _context.Group.FindAsync(id);
+            var @group = await _context.Group
+                .FindAsync(id);
+
+            ViewData["IdProject"] = new SelectList(
+                _context.Project, "Id", "Name", @group.IdProject);
+
             if (@group == null)
             {
                 return NotFound();
             }
-            ViewData["IdProject"] = new SelectList(_context.Project, "Id", "Name", @group.IdProject);
             return View(@group);
         }
 
@@ -120,7 +131,10 @@ namespace MVC_EF1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdProject"] = new SelectList(_context.Project, "Id", "Name", @group.IdProject);
+
+            ViewData["IdProject"] = new SelectList(
+                _context.Project, "Id", "Name", @group.IdProject);
+
             return View(@group);
         }
 

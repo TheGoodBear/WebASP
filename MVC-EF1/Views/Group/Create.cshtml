@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Ajout d'un nouveau groupe</h1>
 
-<h4>Group</h4>
+<h4>Groupe</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,9 +24,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Technology" class="control-label"></label>
-                <select asp-for="Technology" class="form-control"
-                    asp-items="@Html.GetEnumSelectList<Group.eTechnology>()">
-                    <option selected="selected" value="">...</option>
+                <select 
+                    asp-for="Technology" 
+                    asp-items="@Html.GetEnumSelectList<Group.eTechnology>()" 
+                    class="form-control">
+
                 </select>
                 <span asp-validation-for="Technology" class="text-danger"></span>
             </div>
@@ -37,16 +39,17 @@
                     asp-items="ViewBag.IdProject"
                     class="form-control">
                 </select>
+                <span asp-validation-for="IdProject" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Ajouter" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retour à la liste</a>
 </div>
 
 @section Scripts {

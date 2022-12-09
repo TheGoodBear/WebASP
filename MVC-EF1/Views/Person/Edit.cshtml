@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Modification de l'étudiant (ID : @Model.Id)</h1>
 
-<h4>Person</h4>
+<h4>Etudiant</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,7 +25,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Sex" class="control-label"></label>
-                <select asp-for="Sex" class="form-control"></select>
+                <select asp-for="Sex" class="form-control"
+                        asp-items="@Html.GetEnumSelectList<Person.eSex>()">
+                    <option selected="selected" value="">...</option>
+                </select>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,28 +38,38 @@
             </div>
             <div class="form-group">
                 <label asp-for="ITLevel" class="control-label"></label>
-                <select asp-for="ITLevel" class="form-control"></select>
+                <select asp-for="ITLevel" class="form-control"
+                        asp-items="@Html.GetEnumSelectList<Person.eITLevel>()">
+                    <option selected="selected" value="">...</option>
+                </select>
                 <span asp-validation-for="ITLevel" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Location" class="control-label"></label>
-                <select asp-for="Location" class="form-control"></select>
+                <select asp-for="Location" class="form-control"
+                        asp-items="@Html.GetEnumSelectList<Person.eLocation>()">
+                    <option selected="selected" value="">...</option>
+                </select>
                 <span asp-validation-for="Location" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdGroup" class="control-label"></label>
-                <select asp-for="IdGroup" class="form-control" asp-items="ViewBag.IdGroup"></select>
+                <select asp-for="IdGroup"
+                        class="form-control"
+                        asp-items="ViewBag.IdGroup">
+                    <option selected="selected" value="">...</option>
+                </select>
                 <span asp-validation-for="IdGroup" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Modifier" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retour à la liste</a>
 </div>
 
 @section Scripts {

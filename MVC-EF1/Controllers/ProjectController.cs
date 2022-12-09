@@ -19,7 +19,7 @@ namespace MVC_EF1.Controllers
             _context = context;
         }
 
-        // GET: Project
+        // GET: Project/Index
         public async Task<IActionResult> Index()
         {
               return View(await _context.Project.ToListAsync());
@@ -147,9 +147,9 @@ namespace MVC_EF1.Controllers
             if (project != null)
             {
                 _context.Project.Remove(project);
+                await _context.SaveChangesAsync();
             }
             
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
