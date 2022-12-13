@@ -1,12 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MVC_EF1.Models;
+namespace MVMVC_EF.Models;
 
 public class Group
 {
     public enum eTechnology
     {
+        [Display(Name = "Aucun")]
         None,
         ASPNetMVC,
         MAUI,
@@ -23,7 +25,7 @@ public class Group
     public string? Name { get; set; }
     [Display(Name = "Technologie")]
     public eTechnology Technology { get; set; }
-    [Display(Name = "Projet associé")]
+    [Display(Name = "Projet")]
     public int IdProject { get; set; }
 
     // read only (get) properties
@@ -31,11 +33,12 @@ public class Group
 
     // relations properties
     [ForeignKey("IdProject")]
+    [Display(Name = "Projet associé")]
     public virtual Project? Project { get; set; }
     public virtual List<Person>? Persons { get; set; }
 
 
-public override string ToString()
+    public override string ToString()
     {
         return $"({Number}) {Name}";
     }

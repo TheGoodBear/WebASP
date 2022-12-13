@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MVC_EF1.Data;
-using MVC_EF1.Models;
+using MVMVC_EF.Data;
+using MVMVC_EF.Models;
 
-namespace MVC_EF1.Controllers
+namespace MVMVC_EF.Controllers
 {
     public class ProjectController : Controller
     {

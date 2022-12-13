@@ -16,3 +16,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+/* Custom */
+h5
+{
+    margin-top: 30px;
+}
+
+.btn
+{
+    margin-top: 20px;
+}

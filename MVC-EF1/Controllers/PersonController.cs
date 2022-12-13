@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MVC_EF1.Data;
-using MVC_EF1.Models;
+using MVMVC_EF.Data;
+using MVMVC_EF.Models;
 
-namespace MVC_EF1.Controllers
+namespace MVMVC_EF.Controllers
 {
     public class PersonController : Controller
     {
@@ -23,7 +23,11 @@ namespace MVC_EF1.Controllers
         public async Task<IActionResult> Index()
         {
             var dBContext = _context.Person
-                .Include(p => p.Group);
+                .Include(t => t.Group)
+                .ThenInclude(t => t.Project)
+                .OrderBy(p => p.FirstName)
+                .ThenBy(p => p.LastName);
+
             return View(await dBContext.ToListAsync());
         }
 
@@ -36,8 +40,10 @@ namespace MVC_EF1.Controllers
             }
 
             var person = await _context.Person
-                .Include(p => p.Group)
+                .Include(t => t.Group)
+                .ThenInclude(t => t.Project)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (person == null)
             {
                 return NotFound();
@@ -60,9 +66,8 @@ namespace MVC_EF1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Id,LastName,FirstName,Sex, Email,BirthYear,ITLevel,Location,IdGroup")] Person person)
+            [Bind("Id,LastName,FirstName,Sex,Email,BirthDate,ITLevel,Location,IdGroup")] Person person)
         {
-            ModelState.Remove("Group");
             if (ModelState.IsValid)
             {
                 _context.Add(person);
@@ -100,7 +105,7 @@ namespace MVC_EF1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(
-            int id, [Bind("Id,LastName,FirstName,Sex,Email,BirthYear,ITLevel,Location,IdGroup")] Person person)
+            int id, [Bind("Id,LastName,FirstName,Sex,Email,BirthDate,ITLevel,Location,IdGroup")] Person person)
         {
             if (id != person.Id)
             {
@@ -142,8 +147,10 @@ namespace MVC_EF1.Controllers
             }
 
             var person = await _context.Person
-                .Include(p => p.Group)
+                .Include(t => t.Group)
+                .ThenInclude(t => t.Project)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (person == null)
             {
                 return NotFound();

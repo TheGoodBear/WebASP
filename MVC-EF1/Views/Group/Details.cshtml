@@ -1,10 +1,10 @@
-﻿@model MVC_EF1.Models.Group
+﻿@model MVMVC_EF.Models.Group
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Détails du groupe (ID: @Model.Id)</h1>
+<h1>Détails du groupe @Model.Number (@Model.Name)</h1>
 
 <div>
     <h4>Groupe</h4>
@@ -35,8 +35,46 @@
             @Html.DisplayFor(model => model.Project.Name)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Modifier</a> |
-    <a asp-action="Index">Retour à la liste</a>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Modifier</a> |
+        <a asp-action="Index">Retour à la liste</a>
+    </div>
+
+    <h5 class="table offset-sm-2">
+        Etudiants (@Model.Persons.Count() dans ce groupe)
+    </h5>
+    <table class="table offset-sm-2">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Persons.FirstOrDefault().FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Persons.FirstOrDefault().ITLevel)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Persons)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Person" asp-action="Details" asp-route-id="@item.Id">
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ITLevel)
+                    </td>
+                    <td>
+                        <a asp-controller="Person" asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                        <a asp-controller="Person" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </div>

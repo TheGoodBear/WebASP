@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MVC_EF1.Models;
+using MVMVC_EF.Models;
 
-namespace MVC_EF1.Data
+namespace MVMVC_EF.Data
 {
     public class DBContext : DbContext
     {
@@ -32,5 +32,6 @@ namespace MVC_EF1.Data
         public DbSet<Group> Group { get; set; }
 
         public DbSet<Person> Person { get; set; }
+
     }
 }

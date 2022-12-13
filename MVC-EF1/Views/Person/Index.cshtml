@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVC_EF1.Models.Person>
+﻿@model IEnumerable<MVMVC_EF.Models.Person>
 
 @{
     ViewData["Title"] = "Index";
@@ -36,13 +36,13 @@
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">
                     @Html.DisplayFor(modelItem => item.FullName)
-                </a> |
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sex)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BirthYear)
+                @Html.DisplayFor(modelItem => item.Age)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ITLevel)

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
-namespace MVC_EF1.Models;
+namespace MVMVC_EF.Models;
 
 public class Person
 {
@@ -25,7 +25,8 @@ public class Person
         Distanciel
     }
 
-    // raed/write (get/set) properties
+    // read/write (get/set) properties
+    
     public int Id { get; set; }
     [Display(Name = "Nom")]
     [MaxLength(50)]
@@ -37,10 +38,12 @@ public class Person
     [EmailAddress]
     [MaxLength(50)]
     public string Email { get; set; }
+    [Display(Name = "Sexe")]
     public eSex Sex { get; set; }
-    [Display(Name = "Année de naissance")]
-    [Range(1930, 2020, ErrorMessage = "La valeur doit être comprise entre 1930 et 2020")]
-    public int? BirthYear { get; set; }
+    [Display(Name = "Date de naissance")]
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:dddd dd MMM yyyy}", NullDisplayText = "Inconnue")]
+    public DateTime? BirthDate { get; set; }
     [Display(Name = "Niveau")]
     public eITLevel? ITLevel { get; set; }
     [Display(Name = "Localisation")]
@@ -52,11 +55,16 @@ public class Person
     [Display(Name = "Nom")]
     public string FullName => $"{FirstName} {LastName}";
     [Display(Name = "Âge")]
-    public int? Age => DateTime.Now.Year - BirthYear;
+    public int? Age =>
+        BirthDate != null
+        ? DateTime.Now.Year - Convert.ToDateTime(BirthDate).Year
+        : null;
 
     // relations properties
     [ForeignKey("IdGroup")]
+    [Display(Name = "Groupe")]
     public virtual Group? Group { get; set; }
+
 
 
     public override string ToString()

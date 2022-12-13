@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MVC_EF1.Migrations
+namespace MVMVC_EF.Migrations
 {
     public partial class PersonGroupUniqueIndexes : Migration
     {

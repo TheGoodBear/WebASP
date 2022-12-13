@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_EF1.Models;
+using MVMVC_EF.Models;
 using System.Diagnostics;
 
-namespace MVC_EF1.Controllers
+namespace MVMVC_EF.Controllers
 {
     public class HomeController : Controller
     {
@@ -14,11 +14,6 @@ namespace MVC_EF1.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MVC_EF1.Migrations
+namespace MVMVC_EF.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -54,7 +54,7 @@ namespace MVC_EF1.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Sex = table.Column<int>(type: "int", nullable: false),
-                    BirthYear = table.Column<int>(type: "int", nullable: true),
+                    BirthDate = table.Column<int>(type: "int", nullable: true),
                     ITLevel = table.Column<int>(type: "int", nullable: true),
                     Location = table.Column<int>(type: "int", nullable: false),
                     IdGroup = table.Column<int>(type: "int", nullable: true)
