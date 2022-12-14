@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MVMVC_EF.Models.Person>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des @Model.Count() étudiants</h1>
+
+<p>
+    <a asp-action="Create">Ajouter un nouvel étudiant</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Group)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ITLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

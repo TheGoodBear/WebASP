@@ -1,0 +1,76 @@
+﻿@model MVMVC_EF.Models.Person
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Supprimer l'étudiant @Model</h1>
+
+<h3>Êtes-vous sûr de vouloir supprimer cet étudiant ?</h3>
+<div>
+    <h4>Etudiant</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.ITLevel)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.ITLevel)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Group)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Group.Name)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Group.Project)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Group.Project.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+    </form>
+    
+    <a asp-action="Index">Retour à la liste</a>
+</div>

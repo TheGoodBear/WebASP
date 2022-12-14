@@ -24,7 +24,7 @@ namespace MVMVC_EF.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("MVC_EF1.Models.Group", b =>
+            modelBuilder.Entity("MVMVC-EF.Models.Group", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace MVMVC_EF.Migrations
                     b.ToTable("Group");
                 });
 
-            modelBuilder.Entity("MVC_EF1.Models.Person", b =>
+            modelBuilder.Entity("MVMVC-EF.Models.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +103,7 @@ namespace MVMVC_EF.Migrations
                     b.ToTable("Person");
                 });
 
-            modelBuilder.Entity("MVC_EF1.Models.Project", b =>
+            modelBuilder.Entity("MVMVC-EF.Models.Project", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,7 +125,7 @@ namespace MVMVC_EF.Migrations
                     b.ToTable("Project");
                 });
 
-            modelBuilder.Entity("MVC_EF1.Models.Test", b =>
+            modelBuilder.Entity("MVMVC-EF.Models.Test", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -145,9 +145,9 @@ namespace MVMVC_EF.Migrations
                     b.ToTable("Test");
                 });
 
-            modelBuilder.Entity("MVC_EF1.Models.Group", b =>
+            modelBuilder.Entity("MVMVC-EF.Models.Group", b =>
                 {
-                    b.HasOne("MVC_EF1.Models.Project", "Project")
+                    b.HasOne("MVMVC-EF.Models.Project", "Project")
                         .WithMany()
                         .HasForeignKey("IdProject")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -156,16 +156,16 @@ namespace MVMVC_EF.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("MVC_EF1.Models.Person", b =>
+            modelBuilder.Entity("MVMVC-EF.Models.Person", b =>
                 {
-                    b.HasOne("MVC_EF1.Models.Group", "Group")
+                    b.HasOne("MVMVC-EF.Models.Group", "Group")
                         .WithMany("Persons")
                         .HasForeignKey("IdGroup");
 
                     b.Navigation("Group");
                 });
 
-            modelBuilder.Entity("MVC_EF1.Models.Group", b =>
+            modelBuilder.Entity("MVMVC-EF.Models.Group", b =>
                 {
                     b.Navigation("Persons");
                 });

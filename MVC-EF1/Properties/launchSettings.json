@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "MVC_EF1": {
+    "MVMVC-EF": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
