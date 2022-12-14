@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MVMVC_EF.Models;
+using MVC_EF1.Models;
 
-namespace MVMVC_EF.Data
+namespace MVC_EF1.Data
 {
     public class DBContext : DbContext
     {

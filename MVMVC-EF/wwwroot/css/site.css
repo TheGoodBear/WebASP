@@ -34,7 +34,7 @@ h5
 .table tr:nth-child(even) {
     background-color: beige;
 }
-.table tr:hover {
+.table tbody tr:hover {
     background-color: khaki;
 }
 

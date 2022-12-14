@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MVMVC_EF.Migrations
+namespace MVC_EF1.Migrations
 {
     public partial class Test1 : Migration
     {

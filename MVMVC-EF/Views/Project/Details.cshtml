@@ -1,29 +1,25 @@
 ﻿@model MVMVC_EF.ViewModels.ProjectVM
 
-@{
-    ViewData["Title"] = "Details";
-}
-
 <h1>@Model.PageTitle</h1>
 
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-3">
             @Html.DisplayNameFor(model => model.CurrentEntity.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.CurrentEntity.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-3">
             @Html.DisplayNameFor(model => model.CurrentEntity.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-9">
             @Html.DisplayFor(model => model.CurrentEntity.Description)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.CurrentEntity.Id">@Model.EditText</a> |
-    <a asp-action="Index">@Model.GoToListText</a>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.CurrentEntity.Id">@Model.EditText</a>
+    <a class="btn btn-primary" asp-action="Index">@Model.GoToListText</a>
 </div>

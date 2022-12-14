@@ -1,7 +1,7 @@
 ﻿using Microsoft.Build.Framework;
 using System.ComponentModel.DataAnnotations;
 
-namespace MVMVC_EF.Models;
+namespace MVC_EF1.Models;
 
 public class Project
 

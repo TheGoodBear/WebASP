@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MVMVC_EF.Data;
+using MVC_EF1.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DBContext>(options =>

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MVMVC_EF.Models;
+namespace MVC_EF1.Models;
 
 public class Group
 {

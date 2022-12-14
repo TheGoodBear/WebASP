@@ -14,5 +14,5 @@ Il doit exister un lien/bouton permettant de revenir à DMList depuis DMDetail
 
 6 - Ajouter du style css pour rendre agréable à utiliser les vues DMList et DMDetail
 
-Vous devez utiliser l'architecture MVMVC (Model ViewModel Vue Controller)
+Vous devez utiliser l'architecture MVC (Model ViewModel Vue Controller)
 Vous ne devez pas utiliser Entity Framework pour le moment

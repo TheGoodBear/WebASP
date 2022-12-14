@@ -27,6 +27,7 @@ namespace MVMVC_EF.Data
                 .IsUnique();
         }
 
+
         public DbSet<Project> Project { get; set; } = default!;
 
         public DbSet<Group> Group { get; set; }

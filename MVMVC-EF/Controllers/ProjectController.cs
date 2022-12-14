@@ -42,12 +42,7 @@ public class ProjectController : Controller
         VM.IDEntity = id;
         UpdateViewData();
 
-        if (id == null || VM.Entities == null)
-        {
-            return NotFound();
-        }
-
-        if (VM.CurrentEntity == null)
+        if (id == null || VM.Entities == null || VM.CurrentEntity == null)
         {
             return NotFound();
         }
@@ -72,19 +67,19 @@ public class ProjectController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-        [Bind("Id,Name,Description", "CurrentEntity")] ProjectVM CurrentVM)
+        [Bind("Id,Name,Description", "CurrentEntity")] ProjectVM VM)
     {
         if (ModelState.IsValid)
         {
-            _context.Add(CurrentVM.CurrentEntity);
+            _context.Add(VM.CurrentEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        VM = new ProjectVM(
-            _context, 
-            ProjectVM.eView.Create);
-        VM.CurrentEntity = CurrentVM.CurrentEntity;
+        //VM = new ProjectVM(
+        //    _context, 
+        //    ProjectVM.eView.Create);
+        //VM.CurrentEntity = CurrentVM.CurrentEntity;
         UpdateViewData();
 
         return View(VM);
@@ -120,9 +115,9 @@ public class ProjectController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
         int id, 
-        [Bind("Id,Name,Description", "CurrentEntity")] ProjectVM CurrentVM)
+        [Bind("Id,Name,Description", "CurrentEntity")] ProjectVM VM)
     {
-        if (id != CurrentVM.CurrentEntity.Id)
+        if (id != VM.CurrentEntity.Id)
         {
             return NotFound();
         }
@@ -131,7 +126,7 @@ public class ProjectController : Controller
         {
             try
             {
-                _context.Update(CurrentVM.CurrentEntity);
+                _context.Update(VM.CurrentEntity);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -142,10 +137,10 @@ public class ProjectController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        VM = new ProjectVM(
-           _context,
-           ProjectVM.eView.Edit);
-        VM.IDEntity = id;
+        //VM = new ProjectVM(
+        //   _context,
+        //   ProjectVM.eView.Edit);
+        //VM.IDEntity = id;
         UpdateViewData();
 
         return View(VM);

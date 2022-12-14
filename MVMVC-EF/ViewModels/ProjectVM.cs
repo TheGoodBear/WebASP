@@ -60,7 +60,7 @@ namespace MVMVC_EF.ViewModels
                 {
                     CurrentEntity = Context
                         .Project
-                        .FirstOrDefault(p => p.Id == IDEntity);
+                        .FirstOrDefault(p => p.Id == _IDEntity);
                     PageTitle = PageTitle
                         .Replace("[Entity]", CurrentEntity.ToString());
                 }

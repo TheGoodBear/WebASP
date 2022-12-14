@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MVMVC_EF.Migrations
+namespace MVC_EF1.Migrations
 {
     public partial class InitialCreate : Migration
     {

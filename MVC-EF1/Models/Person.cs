@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
-namespace MVMVC_EF.Models;
+namespace MVC_EF1.Models;
 
 public class Person
 {
