@@ -67,20 +67,20 @@ public class ProjectController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-        [Bind("Id,Name,Description", "CurrentEntity")] ProjectVM VM)
+        [Bind("Id,Name,Description", "CurrentEntity")] ProjectVM CurrentVM)
     {
         if (ModelState.IsValid)
         {
-            _context.Add(VM.CurrentEntity);
+            _context.Add(CurrentVM.CurrentEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        //VM = new ProjectVM(
-        //    _context, 
-        //    ProjectVM.eView.Create);
-        //VM.CurrentEntity = CurrentVM.CurrentEntity;
-        UpdateViewData();
+        VM = new ProjectVM(
+            _context,
+            ProjectVM.eView.Create);
+        VM.CurrentEntity = CurrentVM.CurrentEntity;
+        //UpdateViewData();
 
         return View(VM);
     }
@@ -115,9 +115,10 @@ public class ProjectController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
         int id, 
-        [Bind("Id,Name,Description", "CurrentEntity")] ProjectVM VM)
+        [Bind("Id,Name,Description","CurrentEntity")] ProjectVM CurrentVM)
     {
-        if (id != VM.CurrentEntity.Id)
+
+        if (id != CurrentVM.CurrentEntity.Id)
         {
             return NotFound();
         }
@@ -126,7 +127,7 @@ public class ProjectController : Controller
         {
             try
             {
-                _context.Update(VM.CurrentEntity);
+                _context.Update(CurrentVM.CurrentEntity);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -137,11 +138,11 @@ public class ProjectController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        //VM = new ProjectVM(
-        //   _context,
-        //   ProjectVM.eView.Edit);
-        //VM.IDEntity = id;
-        UpdateViewData();
+        VM = new ProjectVM(
+           _context,
+           ProjectVM.eView.Edit);
+        VM.IDEntity = id;
+        //UpdateViewData();
 
         return View(VM);
     }

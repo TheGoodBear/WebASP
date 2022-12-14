@@ -27,14 +27,18 @@ h5
 .btn
 {
     margin-top: 20px;
+    margin-right: 10px;
 }
 
+.image
+{
+    width: 50%;
+}
 
-/* Custom */
 .table tr:nth-child(even) {
     background-color: beige;
 }
 .table tbody tr:hover {
-    background-color: khaki;
+    background-color: bisque;
 }
 
