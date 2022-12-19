@@ -22,6 +22,43 @@ namespace MVMVC_EF.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("MVMVC_EF.Models.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Complement")
+                        .HasMaxLength(70)
+                        .HasColumnType("nvarchar(70)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Road")
+                        .IsRequired()
+                        .HasMaxLength(70)
+                        .HasColumnType("nvarchar(70)");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Address");
+                });
+
             modelBuilder.Entity("MVMVC_EF.Models.Group", b =>
                 {
                     b.Property<int>("Id")
@@ -88,6 +125,14 @@ namespace MVMVC_EF.Migrations
                     b.Property<int>("Location")
                         .HasColumnType("int");
 
+                    b.Property<string>("Phone")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ProfileImage")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<int>("Sex")
                         .HasColumnType("int");
 
@@ -99,6 +144,29 @@ namespace MVMVC_EF.Migrations
                     b.HasIndex("IdGroup");
 
                     b.ToTable("Person");
+                });
+
+            modelBuilder.Entity("MVMVC_EF.Models.PersonAddress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("IdAddress")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPerson")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdAddress");
+
+                    b.HasIndex("IdPerson");
+
+                    b.ToTable("PersonAddress");
                 });
 
             modelBuilder.Entity("MVMVC_EF.Models.Project", b =>
@@ -143,9 +211,38 @@ namespace MVMVC_EF.Migrations
                     b.Navigation("Group");
                 });
 
+            modelBuilder.Entity("MVMVC_EF.Models.PersonAddress", b =>
+                {
+                    b.HasOne("MVMVC_EF.Models.Address", "Address")
+                        .WithMany("PersonAddresses")
+                        .HasForeignKey("IdAddress")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MVMVC_EF.Models.Person", "Person")
+                        .WithMany("PersonAddresses")
+                        .HasForeignKey("IdPerson")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("MVMVC_EF.Models.Address", b =>
+                {
+                    b.Navigation("PersonAddresses");
+                });
+
             modelBuilder.Entity("MVMVC_EF.Models.Group", b =>
                 {
                     b.Navigation("Persons");
+                });
+
+            modelBuilder.Entity("MVMVC_EF.Models.Person", b =>
+                {
+                    b.Navigation("PersonAddresses");
                 });
 #pragma warning restore 612, 618
         }

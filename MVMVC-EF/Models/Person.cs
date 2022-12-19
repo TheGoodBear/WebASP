@@ -25,7 +25,7 @@ public class Person
         Distanciel
     }
 
-    // raed/write (get/set) properties
+    // read/write (get/set) properties
     public int Id { get; set; }
     [Display(Name = "Nom")]
     [MaxLength(50)]
@@ -39,6 +39,13 @@ public class Person
     public string Email { get; set; }
     [Display(Name = "Sexe")]
     public eSex Sex { get; set; }
+    [Display(Name = "Téléphone")]
+    [MaxLength(10)]
+    public string? Phone { get; set; }
+    [Display(Name = "Photo")]
+    [MaxLength(100)]
+    public string? ProfileImage { get; set; }
+
     [Display(Name = "Date de naissance")]
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", NullDisplayText = "Inconnue")]
@@ -63,6 +70,8 @@ public class Person
     [ForeignKey("IdGroup")]
     [Display(Name = "Groupe")]
     public virtual Group? Group { get; set; }
+
+    public virtual List<PersonAddress>? PersonAddresses { get; set; }
 
 
 

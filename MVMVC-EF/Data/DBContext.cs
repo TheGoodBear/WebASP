@@ -34,5 +34,9 @@ namespace MVMVC_EF.Data
 
         public DbSet<Person> Person { get; set; }
 
+        public DbSet<Address> Address { get; set; }
+
+        public DbSet<PersonAddress> PersonAddress { get; set; }
+
     }
 }

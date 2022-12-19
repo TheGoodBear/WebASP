@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using MVMVC_EF.Data;
 using MVMVC_EF.Models;
@@ -25,6 +26,8 @@ namespace MVMVC_EF.Controllers
             var dBContext = _context.Person
                 .Include(t => t.Group)
                 .ThenInclude(t => t.Project)
+                .Include(t => t.PersonAddresses)
+                .ThenInclude(t => t.Address)
                 .OrderBy(p => p.FirstName)
                 .ThenBy(p => p.LastName);
 
@@ -39,9 +42,18 @@ namespace MVMVC_EF.Controllers
                 return NotFound();
             }
 
+            //var person = await _context.Person
+            //    .Include(t => t.Group)
+            //    .ThenInclude(t => t.Project)
+            //    .Include(t => t.PersonAddresses
+            //        .Where(t => t.Address.Name.Contains("livraison")))
+            //    .ThenInclude(t => t.Address)
+            //    .FirstOrDefaultAsync(m => m.Id == id);
             var person = await _context.Person
                 .Include(t => t.Group)
                 .ThenInclude(t => t.Project)
+                .Include(t => t.PersonAddresses)
+                .ThenInclude(t => t.Address)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (person == null)
