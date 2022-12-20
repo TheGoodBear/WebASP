@@ -67,7 +67,7 @@ public class ProjectController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-        [Bind("Id,Name,Description", "CurrentEntity")] ProjectVM CurrentVM)
+        [Bind("Id,Name,Description","CurrentEntity")] ProjectVM CurrentVM)
     {
         if (ModelState.IsValid)
         {

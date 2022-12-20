@@ -1,63 +1,58 @@
-﻿@model MVMVC_EF.Models.Group
+﻿@model MVMVC_EF.ViewModels.GroupVM
 
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Détails du groupe @Model.Number (@Model.Name)</h1>
+<h1>@Model.PageTitle</h1>
 
 <div>
-    <h4>Groupe</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-4">
-            @Html.DisplayNameFor(model => model.Number)
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CurrentEntity.Number)
         </dt>
-        <dd class = "col-sm-8">
-            @Html.DisplayFor(model => model.Number)
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CurrentEntity.Number)
         </dd>
-        <dt class = "col-sm-4">
-            @Html.DisplayNameFor(model => model.Name)
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CurrentEntity.Name)
         </dt>
-        <dd class = "col-sm-8">
-            @Html.DisplayFor(model => model.Name)
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CurrentEntity.Name)
         </dd>
-        <dt class = "col-sm-4">
-            @Html.DisplayNameFor(model => model.Technology)
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CurrentEntity.Technology)
         </dt>
-        <dd class = "col-sm-8">
-            @Html.DisplayFor(model => model.Technology)
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CurrentEntity.Technology)
         </dd>
-        <dt class = "col-sm-4">
-            @Html.DisplayNameFor(model => model.IdProject)
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CurrentEntity.IdProject)
         </dt>
-        <dd class = "col-sm-8">
-            @Html.DisplayFor(model => model.Project.Name)
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CurrentEntity.Project.Name)
         </dd>
     </dl>
 
     <div>
-        <a asp-action="Edit" asp-route-id="@Model?.Id">Modifier</a> |
-        <a asp-action="Index">Retour à la liste</a>
+        <a asp-action="Edit" asp-route-id="@Model?.CurrentEntity.Id">Modifier</a> |
+        <a asp-action="Index">@Model.GoToListText</a>
     </div>
 
     <h5 class="table offset-sm-2">
-        Etudiants (@Model.Persons.Count() dans ce groupe)
+        Etudiants (@Model.CurrentEntity.Persons.Count() dans ce groupe)
     </h5>
     <table class="table offset-sm-2">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Persons.FirstOrDefault().FullName)
+                    @Html.DisplayNameFor(model => model.CurrentEntity.Persons.FirstOrDefault().FullName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Persons.FirstOrDefault().ITLevel)
+                    @Html.DisplayNameFor(model => model.CurrentEntity.Persons.FirstOrDefault().ITLevel)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Persons)
+            @foreach (var item in Model.CurrentEntity.Persons)
             {
                 <tr>
                     <td>
@@ -69,8 +64,12 @@
                         @Html.DisplayFor(modelItem => item.ITLevel)
                     </td>
                     <td>
-                        <a asp-controller="Person" asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
-                        <a asp-controller="Person" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                        <a class="btn btn-primary" asp-controller="Person" asp-action="Edit" asp-route-id="@item.Id">
+                            <i class="@Model.EditIcon"></i>
+                        </a>
+                        <a class="btn btn-warning" asp-controller="Person" asp-action="Delete" asp-route-id="@item.Id">
+                            <i class="@Model.DeleteIcon"></i>
+                        </a>
                     </td>
                 </tr>
             }

@@ -62,6 +62,7 @@ namespace MVMVC_EF.Controllers
 
             if (ModelState.IsValid)
             {
+
                 _context.Add(address);
                 await _context.SaveChangesAsync();
 
@@ -77,7 +78,7 @@ namespace MVMVC_EF.Controllers
                     await _context.SaveChangesAsync();
 
                     var routeValues = new RouteValueDictionary {{ "id", IdPerson }};
-                    return RedirectToAction("Details", "Person", routeValues);  ;
+                    return RedirectToAction("Details", "Person", routeValues);
                 }
 
                 return RedirectToAction(nameof(Index));
