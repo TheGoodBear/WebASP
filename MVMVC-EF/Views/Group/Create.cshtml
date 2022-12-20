@@ -1,55 +1,50 @@
-﻿@model MVMVC_EF.Models.Group
+﻿@model MVMVC_EF.ViewModels.GroupVM
 
-@{
-    ViewData["Title"] = "Create";
-}
+<h1>@Model.PageTitle</h1>
 
-<h1>Ajout d'un nouveau groupe</h1>
-
-<h4>Groupe</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Number" class="control-label"></label>
-                <input asp-for="Number" class="form-control" />
-                <span asp-validation-for="Number" class="text-danger"></span>
+                <label asp-for="CurrentEntity.Number" class="control-label"></label>
+                <input asp-for="CurrentEntity.Number" class="form-control" />
+                <span asp-validation-for="CurrentEntity.Number" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="CurrentEntity.Name" class="control-label"></label>
+                <input asp-for="CurrentEntity.Name" class="form-control" />
+                <span asp-validation-for="CurrentEntity.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Technology" class="control-label"></label>
+                <label asp-for="CurrentEntity.Technology" class="control-label"></label>
                 <select 
-                    asp-for="Technology" 
+                    asp-for="CurrentEntity.Technology" 
                     asp-items="@Html.GetEnumSelectList<Group.eTechnology>()" 
                     class="form-control">
 
                 </select>
-                <span asp-validation-for="Technology" class="text-danger"></span>
+                <span asp-validation-for="CurrentEntity.Technology" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdProject" class="control-label"></label>
+                <label asp-for="CurrentEntity.IdProject" class="control-label"></label>
                 <select 
-                    asp-for="IdProject" 
+                    asp-for="CurrentEntity.IdProject" 
                     asp-items="ViewBag.IdProject"
                     class="form-control">
                 </select>
-                <span asp-validation-for="IdProject" class="text-danger"></span>
+                <span asp-validation-for="CurrentEntity.IdProject" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Ajouter" class="btn btn-primary" />
+                <input type="submit" value="@Model.AddText" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Retour à la liste</a>
+    <a asp-action="Index">@Model.GoToListText</a>
 </div>
 
 @section Scripts {
