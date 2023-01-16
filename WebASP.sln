@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC-EF1", "MVC-EF1\MVC-EF1.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVMVC-EF", "MVMVC-EF\MVMVC-EF.csproj", "{9E49C02D-C2A9-417A-BF60-7DA9D962CD6C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi2", "WebApi2\WebApi2.csproj", "{B1EDA2E6-82B8-4213-B138-A0A6AB524DD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiClient", "WebApiClient\WebApiClient.csproj", "{5805176E-9A97-4AC0-B8A8-7ED06252E1EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{9E49C02D-C2A9-417A-BF60-7DA9D962CD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E49C02D-C2A9-417A-BF60-7DA9D962CD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E49C02D-C2A9-417A-BF60-7DA9D962CD6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1EDA2E6-82B8-4213-B138-A0A6AB524DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1EDA2E6-82B8-4213-B138-A0A6AB524DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1EDA2E6-82B8-4213-B138-A0A6AB524DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1EDA2E6-82B8-4213-B138-A0A6AB524DD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5805176E-9A97-4AC0-B8A8-7ED06252E1EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5805176E-9A97-4AC0-B8A8-7ED06252E1EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5805176E-9A97-4AC0-B8A8-7ED06252E1EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5805176E-9A97-4AC0-B8A8-7ED06252E1EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

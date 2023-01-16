@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MVMVC_EF.Data;
 var builder = WebApplication.CreateBuilder(args);
 
+// register DB context
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DBContext") ?? throw new InvalidOperationException("Connection string 'DBContext' not found.")));
 
