@@ -1,18 +1,41 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+
+/* Custom */
+h5 {
+    margin-top: 30px;
+}
+
+.btn {
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.image {
+    width: 50%;
+}
+
+.table tr:nth-child(even) {
+    background-color: beige;
+}
+
+.table tbody tr:hover {
+    background-color: bisque;
 }
